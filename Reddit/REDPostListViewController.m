@@ -35,11 +35,11 @@
     _SearchResultsTable.delegate = self;
     _SearchResultsTable.dataSource = self;
     
-    [self.SearchResultsTable registerNib:[UINib nibWithNibName:@"REDPostListCell" bundle:nil] forCellReuseIdentifier:@"PostCell"];
+//    [self.SearchResultsTable registerNib:[UINib nibWithNibName:@"REDPostListCell" bundle:nil] forCellReuseIdentifier:@"PostCell"];
     
     [self.navigationItem setTitle:[NSString stringWithFormat:@"r/%@", self.searchQuery]];
     
-    [self performSelectorInBackground:@selector(performRequest:) withObject:@"http://www.reddit.com/r/funny.json"];
+    [self performSelectorInBackground:@selector(performRequest:) withObject:[NSString stringWithFormat:@"http://www.reddit.com/r/%@.json", self.searchQuery]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,10 +80,20 @@
             for (id jsonPost in jsonPosts) {
 
                 [self.posts addObject:[REDPost initCreatePostFromJson:jsonPost]];
-                
             }
         }
     }
+    
+    //[self.SearchResultsTable reloadData];
+    
+    [self performSelectorOnMainThread:@selector(reloadSearchResults) withObject:nil waitUntilDone:NO];
+}
+
+
+- (void) reloadSearchResults
+{
+    [self.SearchResultsTable reloadData];
+    
 }
 
 
@@ -91,8 +101,8 @@
 {
     static NSString *CellIdentifier = @"PostCell";
     static NSString *CellNib = @"REDPostListCell";
-    REDPostListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+//    REDPostListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    REDPostListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         NSLog(@"NEW CELL CREATED");
@@ -102,15 +112,18 @@
 
     }
 
-    
-    [cell.TitleLabel setText:@"Test Title"];
+    REDPost* post = [self.posts objectAtIndex:indexPath.item];
+    //[cell.TitleLabel setText:[self.posts objectAtIndex:indexPath.item].title];
+    [cell.TitleLabel setText:post.title];
+    [cell.SubTitleLabel setText:[NSString stringWithFormat:@"by %@ - %@", post.author, post.domain]];
+    [cell.SubSubTitleLabel setText:[NSString stringWithFormat:@"%@ {%@,%@} - %@ comments", post.score, post.ups, post.downs, post.numComments]];
     
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return [self.posts count];
 }
 
 @end

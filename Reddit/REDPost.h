@@ -16,8 +16,9 @@
 @property (strong, nonatomic) NSString* over_18;
 @property (strong, nonatomic) NSString* downs;
 @property (strong, nonatomic) NSString* name;
-@property (strong, nonatomic) NSString* created;
+@property (strong, nonatomic) NSNumber* created;
 @property (strong, nonatomic) NSString* url;
+@property (strong, nonatomic) NSString* domain;
 @property (strong, nonatomic) NSString* author;
 @property (strong, nonatomic) NSString* numComments;
 @property (strong, nonatomic) NSString* ups;

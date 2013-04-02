@@ -12,19 +12,20 @@
 
 + initCreatePostFromJson: (NSDictionary*) json
 {
-    REDPost* post = [[REDPost alloc] init];
+    REDPost* post = [[REDPost alloc] init];    
     NSDictionary* data = [json objectForKey:@"data"];
     post.title = [data objectForKey:@"title"];
     post.postid = [data objectForKey:@"id"];
-    post.score = [data objectForKey:@"score"];
+    post.score = [NSString stringWithFormat:@"%@", [data objectForKey:@"score"]];
     post.over_18 = [data objectForKey:@"over_18"];
-    post.downs = [data objectForKey:@"downs"];
+    post.downs = [NSString stringWithFormat:@"%@", [data objectForKey:@"downs"]];
     post.name = [data objectForKey:@"name"];
     post.created = [data objectForKey:@"created"];
+    post.domain = [data objectForKey:@"domain"];
     post.url = [data objectForKey:@"url"];
     post.author = [data objectForKey:@"author"];
-    post.numComments = [data objectForKey:@"numComments"];
-    post.ups = [data objectForKey:@"ups"];
+    post.numComments = [NSString stringWithFormat:@"%@", [data objectForKey:@"num_comments"]];
+    post.ups = [NSString stringWithFormat:@"%@", [data objectForKey:@"ups"]];
 
 //    NSLog([NSString stringWithFormat:@"The Post Title is %@", post.title]);
     

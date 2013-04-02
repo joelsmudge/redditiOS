@@ -11,5 +11,6 @@
 @interface REDPostListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SubTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *SubSubTitleLabel;
 
 @end
