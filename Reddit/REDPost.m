@@ -26,7 +26,7 @@
     post.numComments = [data objectForKey:@"numComments"];
     post.ups = [data objectForKey:@"ups"];
 
-    NSLog([NSString stringWithFormat:@"The Post Title is %@", post.title]);
+//    NSLog([NSString stringWithFormat:@"The Post Title is %@", post.title]);
     
     return post;
         
