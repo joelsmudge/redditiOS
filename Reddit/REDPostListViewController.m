@@ -9,6 +9,7 @@
 #import "REDPostListViewController.h"
 #import "REDPost.h"
 #import "REDPostListCell.h"
+#import "REDPostViewController.h"
 
 @interface REDPostListViewController ()
 
@@ -29,39 +30,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Do any additional setup after loading the view from its nib.
-    
     _SearchResultsTable.delegate = self;
     _SearchResultsTable.dataSource = self;
-    
-//    [self.SearchResultsTable registerNib:[UINib nibWithNibName:@"REDPostListCell" bundle:nil] forCellReuseIdentifier:@"PostCell"];
-    
     [self.navigationItem setTitle:[NSString stringWithFormat:@"r/%@", self.searchQuery]];
-    
     [self performSelectorInBackground:@selector(performRequest:) withObject:[NSString stringWithFormat:@"http://www.reddit.com/r/%@.json", self.searchQuery]];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+// Performs GET request
 - (void) performRequest: (NSString*) url
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
                                                            cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                                        timeoutInterval:10];
-    
     [request setHTTPMethod: @"GET"];
-    
     NSError *requestError;
     NSURLResponse *urlResponse = nil;
-    
-    
     NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    
+
     if(NSClassFromString(@"NSJSONSerialization"))
     {
         NSError *error = nil;
@@ -83,9 +73,6 @@
             }
         }
     }
-    
-    //[self.SearchResultsTable reloadData];
-    
     [self performSelectorOnMainThread:@selector(reloadSearchResults) withObject:nil waitUntilDone:NO];
 }
 
@@ -93,7 +80,6 @@
 - (void) reloadSearchResults
 {
     [self.SearchResultsTable reloadData];
-    
 }
 
 
@@ -101,7 +87,6 @@
 {
     static NSString *CellIdentifier = @"PostCell";
     static NSString *CellNib = @"REDPostListCell";
-//    REDPostListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     REDPostListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
@@ -111,9 +96,9 @@
     	cell = (REDPostListCell*)[nib objectAtIndex:0];
 
     }
-
     REDPost* post = [self.posts objectAtIndex:indexPath.item];
-    //[cell.TitleLabel setText:[self.posts objectAtIndex:indexPath.item].title];
+    
+    // Set text for the cell labels
     [cell.TitleLabel setText:post.title];
     [cell.SubTitleLabel setText:[NSString stringWithFormat:@"by %@ - %@", post.author, post.domain]];
     [cell.SubSubTitleLabel setText:[NSString stringWithFormat:@"%@ {%@,%@} - %@ comments", post.score, post.ups, post.downs, post.numComments]];
@@ -124,6 +109,21 @@
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.posts count];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.view endEditing:YES];
+    
+    //allocate your view controller
+    REDPostViewController *postView = [[REDPostViewController alloc] init];
+    
+    REDPost* post = [self.posts objectAtIndex:indexPath.item];
+    
+    //send properties to your view controller
+    postView.post = post;
+    
+    //push it to the navigationController
+    [[self navigationController] pushViewController:postView animated:YES];
 }
 
 @end

@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RedPost.h"
 
 @interface REDPostViewController : UIViewController <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webViewer;
+@property (strong, nonatomic) REDPost* post;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subSubTitleLabel;
 
 @end

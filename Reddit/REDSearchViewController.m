@@ -29,13 +29,6 @@
     // Your application might not need or want this behavior.
     CGRect aRect = self.SearchList.frame;
     aRect.size.height -= kbSize.height;
-    //if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
-    //    CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y-kbSize.height);
-    //    [self.SearchList setContentOffset:scrollPoint animated:YES];
-    //}
-    
-    
-    
 }
 
 -(void) keyboardDidHide:(NSNotification *)notification{
@@ -68,15 +61,11 @@
     _SearchList.dataSource = self;
     _SearchBar.delegate = self;
     [self.navigationItem setTitle:@"Search"];
-    
-//    [UIScreen mainScreen].bounds.size.width;
-//    _SearchList.frame = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,11 +78,7 @@
     
     NSString* cellText = [[self.history objectAtIndex:indexPath.item] description];
     [cell.textLabel setText:cellText];
-    
-//    NSString* cellID = [NSString stringWithFormat:@"Cell Num %d", indexPath.item];
-//    UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-//    NSString* cellText = [NSString stringWithFormat:@"Cell: %d", indexPath.item];
-//    [cell.textLabel setText:cellText];
+
     return cell;
 }
 
@@ -105,23 +90,29 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     
-    NSLog(@"Searched For %@", searchBar.text);
     [self.history addObject:searchBar.text];
-    NSLog(@"History Count when searched %d", [self.history count]);
     
+    [self searchForSubReddit:searchBar.text];
+}
+
+-(void) searchForSubReddit:(NSString*) subReddit
+{    
     //allocate your view controller
     REDPostListViewController *postListView = [[REDPostListViewController alloc] init];
     
     //send properties to your view controller
-    postListView.searchQuery = searchBar.text;
+    postListView.searchQuery = subReddit;
     
     //push it to the navigationController
     [[self navigationController] pushViewController:postListView animated:YES];
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.view endEditing:YES];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self searchForSubReddit:cell.textLabel.text];
+    
+    
     NSLog(@"table selected");
 }
 

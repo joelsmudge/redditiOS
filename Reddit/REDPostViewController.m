@@ -28,7 +28,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _webViewer.delegate = self;
-    [self.webViewer loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://stuff.co.nz"]]];
+    [self.webViewer loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.post.url]]];
+    
+    [self.titleLabel setText:self.post.title];
+    [self.subTitleLabel setText:[NSString stringWithFormat:@"by %@ - %@", self.post.author, self.post.domain]];
+    [self.subSubTitleLabel setText:[NSString stringWithFormat:@"%@ {%@,%@} - %@ comments", self.post.score, self.post.ups, self.post.downs, self.post.numComments]];
+    
 }
 
 - (void)didReceiveMemoryWarning
