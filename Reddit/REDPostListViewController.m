@@ -8,6 +8,7 @@
 
 #import "REDPostListViewController.h"
 #import "REDPost.h"
+#import "REDPostListCell.h"
 
 @interface REDPostListViewController ()
 
@@ -30,6 +31,11 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view from its nib.
+    
+    _SearchResultsTable.delegate = self;
+    _SearchResultsTable.dataSource = self;
+    
+    [self.SearchResultsTable registerNib:[UINib nibWithNibName:@"REDPostListCell" bundle:nil] forCellReuseIdentifier:@"PostCell"];
     
     [self.navigationItem setTitle:[NSString stringWithFormat:@"r/%@", self.searchQuery]];
     
@@ -56,8 +62,6 @@
     
     NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
     
-    //NSData *returnedData = [json dataUsingEncoding:NSUTF8StringEncoding];
-    
     if(NSClassFromString(@"NSJSONSerialization"))
     {
         NSError *error = nil;
@@ -66,31 +70,47 @@
                      options:0
                      error:&error];
         
-        if(error) { /* JSON was malformed, act appropriately here */ }
+        if(error) {}
         
-        // the originating poster wants to deal with dictionaries;
-        // assuming you do too then something like this is the first
-        // validation step:
         if([object isKindOfClass:[NSDictionary class]])
         {
             NSDictionary *results = object;
             NSArray* jsonPosts = [[results objectForKey:@"data"] objectForKey:@"children"];
             
             for (id jsonPost in jsonPosts) {
-                
-                NSLog([NSString stringWithFormat:@"post : %@", [jsonPost description]]);
-                NSLog([NSString stringWithFormat:@"data : %@", [jsonPost objectForKey:@"data"]]);
+
                 [self.posts addObject:[REDPost initCreatePostFromJson:jsonPost]];
                 
             }
         }
     }
-
-    
-    //NSString *output = [[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding];
-    
-    //NSLog(@"output: %@", output);
 }
 
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"PostCell";
+    static NSString *CellNib = @"REDPostListCell";
+    REDPostListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    
+    if (cell == nil) {
+        NSLog(@"NEW CELL CREATED");
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellNib owner:self options:nil];
+    	cell = (REDPostListCell*)[nib objectAtIndex:0];
+
+    }
+
+    
+    [cell.TitleLabel setText:@"Test Title"];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
 
 @end

@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface REDPostListViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *DebugSearchedForString;
+@interface REDPostListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSString *searchQuery;
-@property (weak, nonatomic) IBOutlet UIButton *DebugStuffButton;
 @property (strong, nonatomic) NSMutableArray *posts;
+@property (weak, nonatomic) IBOutlet UITableView *SearchResultsTable;
 
 @end
