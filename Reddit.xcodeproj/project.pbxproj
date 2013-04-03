@@ -331,6 +331,7 @@
 				5DF9C95E170A354E0030E6EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

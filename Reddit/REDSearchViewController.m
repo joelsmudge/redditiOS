@@ -46,6 +46,11 @@
         // Custom initialization
         self.history = [[NSMutableArray alloc] init];
         
+        //Creating a history file
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        self.historyFileName = [documentsDirectory stringByAppendingPathComponent:@"subreddithistory.dat"];
+        
     }
     return self;
 }
@@ -61,6 +66,18 @@
     _SearchList.dataSource = self;
     _SearchBar.delegate = self;
     [self.navigationItem setTitle:@"Search"];
+    
+    //Load the array
+    self.history = [[NSMutableArray alloc] initWithContentsOfFile: self.historyFileName];
+    if(self.history == nil)
+    {
+        //Array file didn't exist... create a new one
+        self.history = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        //Fill with default values
+        [self.history addObject:@"All"];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,7 +93,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    NSString* cellText = [[self.history objectAtIndex:indexPath.item] description];
+    int index = ([self.history count] - 1 - indexPath.item);
+    NSString* cellText = [[self.history objectAtIndex:index] description];
     [cell.textLabel setText:cellText];
 
     return cell;
@@ -89,8 +107,6 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    
-    [self.history addObject:searchBar.text];
     
     [self searchForSubReddit:searchBar.text];
 }
@@ -105,6 +121,26 @@
     
     //push it to the navigationController
     [[self navigationController] pushViewController:postListView animated:YES];
+    
+    while([self.history containsObject:subReddit]){
+        NSLog(@"Already Contains");
+        [self.history removeObjectIdenticalTo:subReddit];
+        int index = [self.history indexOfObject:subReddit];
+        [self.history removeObjectAtIndex:index];
+        
+    }
+    
+    
+    [self.history addObject:subReddit];
+    
+    while([self.history count] >= 10){
+        [self.history removeObjectAtIndex:0];
+    }
+    
+    //Save the array
+    [self.history writeToFile:self.historyFileName atomically:YES];
+    
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -117,6 +153,11 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    
+
+    
+    
+    
     [self.SearchList reloadData];
 }
 

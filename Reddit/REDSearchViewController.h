@@ -13,6 +13,5 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *SearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *SearchList;
 @property (strong, nonatomic) NSMutableArray *history;
-
-
+@property (strong, nonatomic) NSString *historyFileName;
 @end

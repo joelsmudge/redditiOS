@@ -14,6 +14,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.searchView = [[REDSearchViewController alloc] initWithNibName:@"REDSearchViewController" bundle:nil];
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:self.searchView];
 
