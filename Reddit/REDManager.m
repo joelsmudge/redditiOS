@@ -58,7 +58,7 @@
     NSURL *loginurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.reddit.com/api/login/%@",username]];
     NSMutableURLRequest *loginrequest = [NSMutableURLRequest requestWithURL:loginurl];
     [loginrequest setHTTPMethod:@"POST"];
-    NSData *loginRequestBody = [[NSString stringWithFormat:@"api_type=json&user=%@&passwd=%@",username,password] dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *loginRequestBody = [[NSString stringWithFormat:@"api_type=json&user=%@&passwd=%@&rem=True",username,password] dataUsingEncoding:NSUTF8StringEncoding];
     [loginrequest setHTTPBody:loginRequestBody];
     NSURLResponse *loginResponse = NULL;
     NSError *loginRequestError = NULL;

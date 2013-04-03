@@ -52,9 +52,12 @@
                                                            cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                                        timeoutInterval:10];
     [request setHTTPMethod: @"GET"];
+    [request addValue:[REDManager sharedREDManager].redditCookie forHTTPHeaderField:@"reddit_session"];
     NSError *requestError;
     NSURLResponse *urlResponse = nil;
     NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+    
+    NSLog([[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding]);
 
     if(NSClassFromString(@"NSJSONSerialization"))
     {
@@ -99,10 +102,8 @@
     }
     REDPost* post = [self.posts objectAtIndex:indexPath.item];
     
-    // Set text for the cell labels
-    [cell.TitleLabel setText:post.title];
-    [cell.SubTitleLabel setText:[NSString stringWithFormat:@"by %@ - %@", post.author, post.domain]];
-    [cell.SubSubTitleLabel setText:[NSString stringWithFormat:@"%@ {%@,%@} - %@ comments", post.score, post.ups, post.downs, post.numComments]];
+    [cell setPost:post];
+    
     
     return cell;
 }
@@ -125,6 +126,12 @@
     
     //push it to the navigationController
     [[self navigationController] pushViewController:postView animated:YES];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    // Deselecting Row
+    [self.SearchResultsTable deselectRowAtIndexPath:[self.SearchResultsTable indexPathForSelectedRow] animated:YES];
 }
 
 -(void)webView:(UIWebView *)technobuffalo didFailLoadWithError:(NSError *)error {

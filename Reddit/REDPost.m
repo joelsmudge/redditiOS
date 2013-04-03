@@ -24,6 +24,7 @@
     post.domain = [data objectForKey:@"domain"];
     post.url = [data objectForKey:@"url"];
     post.author = [data objectForKey:@"author"];
+    post.thumbnail = [data objectForKey:@"thumbnail"];
     post.numComments = [NSString stringWithFormat:@"%@", [data objectForKey:@"num_comments"]];
     post.ups = [NSString stringWithFormat:@"%@", [data objectForKey:@"ups"]];
     

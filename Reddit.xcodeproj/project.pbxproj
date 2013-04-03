@@ -28,6 +28,7 @@
 		5DF9C98E170BD94F0030E6EA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C98D170BD94F0030E6EA /* CFNetwork.framework */; };
 		5DF9C995170BDA790030E6EA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C98C170BD7E20030E6EA /* Reachability.m */; };
 		5DF9C996170BDC880030E6EA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C98F170BD97F0030E6EA /* SystemConfiguration.framework */; };
+		5DF9C999170CCD1A0030E6EA /* REDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C998170CCD1A0030E6EA /* REDImageManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,8 @@
 		5DF9C98F170BD97F0030E6EA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5DF9C991170BD98F0030E6EA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5DF9C993170BD9AC0030E6EA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5DF9C997170CCD1A0030E6EA /* REDImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REDImageManager.h; sourceTree = "<group>"; };
+		5DF9C998170CCD1A0030E6EA /* REDImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REDImageManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 				5DF9C98C170BD7E20030E6EA /* Reachability.m */,
 				5DF9C97C170BCD5D0030E6EA /* REDManager.h */,
 				5DF9C97D170BCD5D0030E6EA /* REDManager.m */,
+				5DF9C997170CCD1A0030E6EA /* REDImageManager.h */,
+				5DF9C998170CCD1A0030E6EA /* REDImageManager.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				5DF9C976170B6C840030E6EA /* REDPostListCell.m in Sources */,
 				5DF9C97E170BCD5D0030E6EA /* REDManager.m in Sources */,
 				5DF9C995170BDA790030E6EA /* Reachability.m in Sources */,
+				5DF9C999170CCD1A0030E6EA /* REDImageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

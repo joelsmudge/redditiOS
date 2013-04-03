@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSString* domain;
 @property (strong, nonatomic) NSString* author;
 @property (strong, nonatomic) NSString* numComments;
+@property (strong, nonatomic) NSString* thumbnail;
 @property (strong, nonatomic) NSString* ups;
 + initCreatePostFromJson: (NSDictionary*) json;
 

@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "REDPost.h"
 
 @interface REDPostListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SubTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SubSubTitleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
+
+- (void) setPost: (REDPost*) post;
 
 @end
