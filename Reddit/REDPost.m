@@ -26,8 +26,6 @@
     post.author = [data objectForKey:@"author"];
     post.numComments = [NSString stringWithFormat:@"%@", [data objectForKey:@"num_comments"]];
     post.ups = [NSString stringWithFormat:@"%@", [data objectForKey:@"ups"]];
-
-//    NSLog([NSString stringWithFormat:@"The Post Title is %@", post.title]);
     
     return post;
         

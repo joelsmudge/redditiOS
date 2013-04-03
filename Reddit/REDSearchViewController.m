@@ -15,9 +15,6 @@
 @implementation REDSearchViewController
 
 -(void) keyboardDidShow:(NSNotification *)notification{
-    NSLog(@"keyboardDidShow");
-    
-    
     NSDictionary* info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
@@ -32,11 +29,9 @@
 }
 
 -(void) keyboardDidHide:(NSNotification *)notification{
-    NSLog(@"keyboardDidHide");    
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     self.SearchList.contentInset = contentInsets;
     self.SearchList.scrollIndicatorInsets = contentInsets;
-    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,7 +62,7 @@
     _SearchBar.delegate = self;
     [self.navigationItem setTitle:@"Search"];
     
-    //Load the array
+    //Load the history array from the search history file
     self.history = [[NSMutableArray alloc] initWithContentsOfFile: self.historyFileName];
     if(self.history == nil)
     {
@@ -102,12 +97,11 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"History Count %d", [self.history count]);
     return [self.history count];
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{    
     [self searchForSubReddit:searchBar.text];
 }
 
@@ -122,42 +116,33 @@
     //push it to the navigationController
     [[self navigationController] pushViewController:postListView animated:YES];
     
+    // remove all occurances of search items from history
     while([self.history containsObject:subReddit]){
-        NSLog(@"Already Contains");
         [self.history removeObjectIdenticalTo:subReddit];
         int index = [self.history indexOfObject:subReddit];
         [self.history removeObjectAtIndex:index];
         
     }
     
-    
+    // Add searched object to history
     [self.history addObject:subReddit];
     
+    // limit to 10 items
     while([self.history count] >= 10){
         [self.history removeObjectAtIndex:0];
     }
     
     //Save the array
     [self.history writeToFile:self.historyFileName atomically:YES];
-    
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.view endEditing:YES];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self searchForSubReddit:cell.textLabel.text];
-    
-    
-    NSLog(@"table selected");
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
-
-    
-    
-    
     [self.SearchList reloadData];
 }
 

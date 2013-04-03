@@ -90,11 +90,8 @@
     REDPostListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        NSLog(@"NEW CELL CREATED");
-        
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellNib owner:self options:nil];
     	cell = (REDPostListCell*)[nib objectAtIndex:0];
-
     }
     REDPost* post = [self.posts objectAtIndex:indexPath.item];
     
