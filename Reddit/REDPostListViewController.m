@@ -95,6 +95,7 @@
 {
     [self.SearchResultsTable reloadData];
     [self.loadingSpinner stopAnimating];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 
@@ -125,6 +126,7 @@
         // Load more posts
         if([[REDManager sharedREDManager] checkReachableWithMessage]){
             [self.loadingSpinner startAnimating];
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
             [self performSelectorInBackground:@selector(loadMorePosts:) withObject:self.searchQuery];
         } else {
             //[self.navigationController popViewControllerAnimated:YES];

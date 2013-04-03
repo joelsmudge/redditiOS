@@ -57,11 +57,13 @@
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
     [loadingIndicator startAnimating];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [loadingIndicator stopAnimating];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 @end
