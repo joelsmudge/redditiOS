@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSMutableArray *posts;
 @property (weak, nonatomic) IBOutlet UITableView *SearchResultsTable;
 @property int currentlyLoadingToPostIndex;
+@property (weak, nonatomic) IBOutlet UIView *loadingBar;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
 
 
 @end

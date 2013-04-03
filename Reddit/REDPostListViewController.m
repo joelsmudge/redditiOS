@@ -32,6 +32,8 @@
     [super viewDidLoad];
     _SearchResultsTable.delegate = self;
     _SearchResultsTable.dataSource = self;
+    [self.loadingBar setBackgroundColor:[UIColor grayColor]];
+    [self.loadingSpinner startAnimating];
     [self.navigationItem setTitle:[NSString stringWithFormat:@"r/%@", self.searchQuery]];
     if([[REDManager sharedREDManager] checkReachableWithMessage]){
         [self performSelectorInBackground:@selector(loadMorePosts:) withObject:self.searchQuery];
@@ -58,8 +60,9 @@
     [request setHTTPMethod: @"GET"];
     [request addValue:[REDManager sharedREDManager].redditCookie forHTTPHeaderField:@"reddit_session"];
     NSError *requestError;
-    NSURLResponse *urlResponse = nil;
+    NSHTTPURLResponse *urlResponse = nil;
     NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+//    [urlResponse statusCode];
     
     NSLog([[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding]);
 
@@ -91,6 +94,7 @@
 - (void) reloadSearchResults
 {
     [self.SearchResultsTable reloadData];
+    [self.loadingSpinner stopAnimating];
 }
 
 
@@ -117,9 +121,10 @@
     
     
     // If index gets close to posts length then load more posts asyncronosly
-    if([indexPath item] + 10 > self.currentlyLoadingToPostIndex){
+    if([indexPath item] + 5 > self.currentlyLoadingToPostIndex){
         // Load more posts
         if([[REDManager sharedREDManager] checkReachableWithMessage]){
+            [self.loadingSpinner startAnimating];
             [self performSelectorInBackground:@selector(loadMorePosts:) withObject:self.searchQuery];
         } else {
             //[self.navigationController popViewControllerAnimated:YES];
@@ -129,8 +134,6 @@
     
     
 }
-
-
 
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
