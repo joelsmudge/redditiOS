@@ -96,6 +96,18 @@
     [self.SearchResultsTable reloadData];
     [self.loadingSpinner stopAnimating];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    if([self.posts count] == 0){
+        // No posts found for subreddit
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Posts" message: @"Could Not Find Posts for this Sub-Reddit." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        self.loadingBar.hidden = YES;
+    }
+    
+    
+    
+    
 }
 
 
