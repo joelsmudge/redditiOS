@@ -12,5 +12,7 @@
 @property (strong, nonatomic) NSString *searchQuery;
 @property (strong, nonatomic) NSMutableArray *posts;
 @property (weak, nonatomic) IBOutlet UITableView *SearchResultsTable;
+@property int currentlyLoadingToPostIndex;
+
 
 @end

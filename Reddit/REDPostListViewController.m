@@ -34,7 +34,7 @@
     _SearchResultsTable.dataSource = self;
     [self.navigationItem setTitle:[NSString stringWithFormat:@"r/%@", self.searchQuery]];
     if([[REDManager sharedREDManager] checkReachableWithMessage]){
-        [self performSelectorInBackground:@selector(performRequest:) withObject:[NSString stringWithFormat:@"http://www.reddit.com/r/%@.json", self.searchQuery]];
+        [self performSelectorInBackground:@selector(loadMorePosts:) withObject:self.searchQuery];
     } else {
         //[self.navigationController popViewControllerAnimated:YES];
     }
@@ -46,8 +46,12 @@
 }
 
 // Performs GET request
-- (void) performRequest: (NSString*) url
+- (void) loadMorePosts: (NSString*) subReddit
 {
+    
+    REDPost* lastPost =  [_posts lastObject];
+    NSString* url = [NSString stringWithFormat:@"http://www.reddit.com/r/%@.json?after=%@", subReddit, lastPost.name];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
                                                            cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                                        timeoutInterval:10];
@@ -107,6 +111,27 @@
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    // If index gets close to posts length then load more posts asyncronosly
+    if([indexPath item] + 10 > self.currentlyLoadingToPostIndex){
+        // Load more posts
+        if([[REDManager sharedREDManager] checkReachableWithMessage]){
+            [self performSelectorInBackground:@selector(loadMorePosts:) withObject:self.searchQuery];
+        } else {
+            //[self.navigationController popViewControllerAnimated:YES];
+        }
+        self.currentlyLoadingToPostIndex += 25;
+    }
+    
+    
+}
+
+
+
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
