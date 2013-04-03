@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5DF9C943170A354E0030E6EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C942170A354E0030E6EA /* UIKit.framework */; };
 		5DF9C945170A354E0030E6EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C944170A354E0030E6EA /* Foundation.framework */; };
-		5DF9C947170A354E0030E6EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C946170A354E0030E6EA /* CoreGraphics.framework */; };
 		5DF9C94D170A354E0030E6EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5DF9C94B170A354E0030E6EA /* InfoPlist.strings */; };
 		5DF9C94F170A354E0030E6EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C94E170A354E0030E6EA /* main.m */; };
 		5DF9C953170A354E0030E6EA /* REDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C952170A354E0030E6EA /* REDAppDelegate.m */; };
@@ -25,6 +24,10 @@
 		5DF9C973170A7B6C0030E6EA /* REDPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C972170A7B6C0030E6EA /* REDPost.m */; };
 		5DF9C976170B6C840030E6EA /* REDPostListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C975170B6C840030E6EA /* REDPostListCell.m */; };
 		5DF9C978170B6CA20030E6EA /* REDPostListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DF9C977170B6CA20030E6EA /* REDPostListCell.xib */; };
+		5DF9C97E170BCD5D0030E6EA /* REDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C97D170BCD5D0030E6EA /* REDManager.m */; };
+		5DF9C98E170BD94F0030E6EA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C98D170BD94F0030E6EA /* CFNetwork.framework */; };
+		5DF9C995170BDA790030E6EA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C98C170BD7E20030E6EA /* Reachability.m */; };
+		5DF9C996170BDC880030E6EA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C98F170BD97F0030E6EA /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,14 @@
 		5DF9C974170B6C840030E6EA /* REDPostListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REDPostListCell.h; sourceTree = "<group>"; };
 		5DF9C975170B6C840030E6EA /* REDPostListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REDPostListCell.m; sourceTree = "<group>"; };
 		5DF9C977170B6CA20030E6EA /* REDPostListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = REDPostListCell.xib; sourceTree = "<group>"; };
+		5DF9C97C170BCD5D0030E6EA /* REDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REDManager.h; sourceTree = "<group>"; };
+		5DF9C97D170BCD5D0030E6EA /* REDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REDManager.m; sourceTree = "<group>"; };
+		5DF9C98B170BD7E20030E6EA /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		5DF9C98C170BD7E20030E6EA /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5DF9C98D170BD94F0030E6EA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5DF9C98F170BD97F0030E6EA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5DF9C991170BD98F0030E6EA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5DF9C993170BD9AC0030E6EA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +73,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DF9C996170BDC880030E6EA /* SystemConfiguration.framework in Frameworks */,
+				5DF9C98E170BD94F0030E6EA /* CFNetwork.framework in Frameworks */,
 				5DF9C943170A354E0030E6EA /* UIKit.framework in Frameworks */,
 				5DF9C945170A354E0030E6EA /* Foundation.framework in Frameworks */,
-				5DF9C947170A354E0030E6EA /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +86,10 @@
 		5DF9C936170A354E0030E6EA = {
 			isa = PBXGroup;
 			children = (
+				5DF9C993170BD9AC0030E6EA /* libz.dylib */,
+				5DF9C991170BD98F0030E6EA /* MobileCoreServices.framework */,
+				5DF9C98F170BD97F0030E6EA /* SystemConfiguration.framework */,
+				5DF9C98D170BD94F0030E6EA /* CFNetwork.framework */,
 				5DF9C948170A354E0030E6EA /* Reddit */,
 				5DF9C941170A354E0030E6EA /* Frameworks */,
 				5DF9C940170A354E0030E6EA /* Products */,
@@ -103,7 +119,6 @@
 			children = (
 				5DF9C951170A354E0030E6EA /* REDAppDelegate.h */,
 				5DF9C952170A354E0030E6EA /* REDAppDelegate.m */,
-				5DF9C949170A354E0030E6EA /* Supporting Files */,
 				5DF9C962170A38B40030E6EA /* REDSearchViewController.h */,
 				5DF9C963170A38B40030E6EA /* REDSearchViewController.m */,
 				5DF9C964170A38B40030E6EA /* REDSearchViewController.xib */,
@@ -118,6 +133,8 @@
 				5DF9C974170B6C840030E6EA /* REDPostListCell.h */,
 				5DF9C975170B6C840030E6EA /* REDPostListCell.m */,
 				5DF9C977170B6CA20030E6EA /* REDPostListCell.xib */,
+				5DF9C97F170BCD610030E6EA /* Shared */,
+				5DF9C949170A354E0030E6EA /* Supporting Files */,
 			);
 			path = Reddit;
 			sourceTree = "<group>";
@@ -125,6 +142,7 @@
 		5DF9C949170A354E0030E6EA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5DF9C980170BCD780030E6EA /* images */,
 				5DF9C94A170A354E0030E6EA /* Reddit-Info.plist */,
 				5DF9C94B170A354E0030E6EA /* InfoPlist.strings */,
 				5DF9C94E170A354E0030E6EA /* main.m */,
@@ -134,6 +152,24 @@
 				5DF9C958170A354E0030E6EA /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5DF9C97F170BCD610030E6EA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5DF9C98B170BD7E20030E6EA /* Reachability.h */,
+				5DF9C98C170BD7E20030E6EA /* Reachability.m */,
+				5DF9C97C170BCD5D0030E6EA /* REDManager.h */,
+				5DF9C97D170BCD5D0030E6EA /* REDManager.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		5DF9C980170BCD780030E6EA /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +249,8 @@
 				5DF9C96F170A5F100030E6EA /* REDPostViewController.m in Sources */,
 				5DF9C973170A7B6C0030E6EA /* REDPost.m in Sources */,
 				5DF9C976170B6C840030E6EA /* REDPostListCell.m in Sources */,
+				5DF9C97E170BCD5D0030E6EA /* REDManager.m in Sources */,
+				5DF9C995170BDA790030E6EA /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,6 +46,9 @@
         NSString *documentsDirectory = [paths objectAtIndex:0];
         self.historyFileName = [documentsDirectory stringByAppendingPathComponent:@"subreddithistory.dat"];
         
+        
+        
+        
     }
     return self;
 }
@@ -71,6 +74,7 @@
         
         //Fill with default values
         [self.history addObject:@"All"];
+        [self.history writeToFile:self.historyFileName atomically:YES];
     }
 
 }
@@ -118,7 +122,6 @@
     
     // remove all occurances of search items from history
     while([self.history containsObject:subReddit]){
-        [self.history removeObjectIdenticalTo:subReddit];
         int index = [self.history indexOfObject:subReddit];
         [self.history removeObjectAtIndex:index];
         

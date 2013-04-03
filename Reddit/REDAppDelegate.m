@@ -14,6 +14,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [REDManager sharedREDManager];
+    [[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
     
     self.searchView = [[REDSearchViewController alloc] initWithNibName:@"REDSearchViewController" bundle:nil];
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:self.searchView];
@@ -25,6 +27,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+
+    
     return YES;
 }
 

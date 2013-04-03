@@ -33,7 +33,11 @@
     _SearchResultsTable.delegate = self;
     _SearchResultsTable.dataSource = self;
     [self.navigationItem setTitle:[NSString stringWithFormat:@"r/%@", self.searchQuery]];
-    [self performSelectorInBackground:@selector(performRequest:) withObject:[NSString stringWithFormat:@"http://www.reddit.com/r/%@.json", self.searchQuery]];
+    if([[REDManager sharedREDManager] checkReachableWithMessage]){
+        [self performSelectorInBackground:@selector(performRequest:) withObject:[NSString stringWithFormat:@"http://www.reddit.com/r/%@.json", self.searchQuery]];
+    } else {
+        //[self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,6 +125,12 @@
     
     //push it to the navigationController
     [[self navigationController] pushViewController:postView animated:YES];
+}
+
+-(void)webView:(UIWebView *)technobuffalo didFailLoadWithError:(NSError *)error {
+    
+
+
 }
 
 @end
