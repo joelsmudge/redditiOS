@@ -16,6 +16,14 @@
 		5D9D78E8170D2FA20031827A /* common_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78E2170D2FA20031827A /* common_bg@2x.png */; };
 		5D9D78E9170D2FA20031827A /* navbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78E3170D2FA20031827A /* navbar_bg.png */; };
 		5D9D78EA170D2FA20031827A /* navbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78E4170D2FA20031827A /* navbar_bg@2x.png */; };
+		5D9D78EE170E1A140031827A /* REDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D78EC170E1A140031827A /* REDLoginViewController.m */; };
+		5D9D78EF170E1A140031827A /* REDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78ED170E1A140031827A /* REDLoginViewController.xib */; };
+		5D9D78F1170E1B9C0031827A /* reddit-alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78F0170E1B9C0031827A /* reddit-alien.png */; };
+		5D9D78F3170E37C80031827A /* dvcolcked2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78F2170E37C80031827A /* dvcolcked2.png */; };
+		5D9D78F5170E391E0031827A /* unclickedup.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78F4170E391E0031827A /* unclickedup.png */; };
+		5D9D78F7170E39250031827A /* unclickedDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78F6170E39250031827A /* unclickedDown.png */; };
+		5D9D78F9170E399F0031827A /* upvoteClicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78F8170E399F0031827A /* upvoteClicked.png */; };
+		5D9D78FB170E3DA60031827A /* upvoteClicked2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78FA170E3DA60031827A /* upvoteClicked2.png */; };
 		5DF9C943170A354E0030E6EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C942170A354E0030E6EA /* UIKit.framework */; };
 		5DF9C945170A354E0030E6EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C944170A354E0030E6EA /* Foundation.framework */; };
 		5DF9C94D170A354E0030E6EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5DF9C94B170A354E0030E6EA /* InfoPlist.strings */; };
@@ -52,6 +60,15 @@
 		5D9D78E2170D2FA20031827A /* common_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "common_bg@2x.png"; path = "../../../Downloads/CustomNavBar/CustomNavBar/images/common_bg@2x.png"; sourceTree = "<group>"; };
 		5D9D78E3170D2FA20031827A /* navbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navbar_bg.png; path = ../../../Downloads/CustomNavBar/CustomNavBar/images/navbar_bg.png; sourceTree = "<group>"; };
 		5D9D78E4170D2FA20031827A /* navbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navbar_bg@2x.png"; path = "../../../Downloads/CustomNavBar/CustomNavBar/images/navbar_bg@2x.png"; sourceTree = "<group>"; };
+		5D9D78EB170E1A140031827A /* REDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REDLoginViewController.h; sourceTree = "<group>"; };
+		5D9D78EC170E1A140031827A /* REDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REDLoginViewController.m; sourceTree = "<group>"; };
+		5D9D78ED170E1A140031827A /* REDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = REDLoginViewController.xib; sourceTree = "<group>"; };
+		5D9D78F0170E1B9C0031827A /* reddit-alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reddit-alien.png"; path = "../../../Downloads/reddit-alien.png"; sourceTree = "<group>"; };
+		5D9D78F2170E37C80031827A /* dvcolcked2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dvcolcked2.png; path = ../../../Downloads/dvcolcked2.png; sourceTree = "<group>"; };
+		5D9D78F4170E391E0031827A /* unclickedup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unclickedup.png; path = ../../../Downloads/unclickedup.png; sourceTree = "<group>"; };
+		5D9D78F6170E39250031827A /* unclickedDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unclickedDown.png; path = ../../../Downloads/unclickedDown.png; sourceTree = "<group>"; };
+		5D9D78F8170E399F0031827A /* upvoteClicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = upvoteClicked.png; path = ../../../Downloads/upvoteClicked.png; sourceTree = "<group>"; };
+		5D9D78FA170E3DA60031827A /* upvoteClicked2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = upvoteClicked2.png; path = ../../../Downloads/upvoteClicked2.png; sourceTree = "<group>"; };
 		5DF9C93F170A354E0030E6EA /* Reddit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reddit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF9C942170A354E0030E6EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5DF9C944170A354E0030E6EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -162,6 +179,9 @@
 				5DF9C974170B6C840030E6EA /* REDPostListCell.h */,
 				5DF9C975170B6C840030E6EA /* REDPostListCell.m */,
 				5DF9C977170B6CA20030E6EA /* REDPostListCell.xib */,
+				5D9D78EB170E1A140031827A /* REDLoginViewController.h */,
+				5D9D78EC170E1A140031827A /* REDLoginViewController.m */,
+				5D9D78ED170E1A140031827A /* REDLoginViewController.xib */,
 				5DF9C97F170BCD610030E6EA /* Shared */,
 				5DF9C949170A354E0030E6EA /* Supporting Files */,
 			);
@@ -199,6 +219,12 @@
 		5DF9C980170BCD780030E6EA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5D9D78FA170E3DA60031827A /* upvoteClicked2.png */,
+				5D9D78F8170E399F0031827A /* upvoteClicked.png */,
+				5D9D78F6170E39250031827A /* unclickedDown.png */,
+				5D9D78F4170E391E0031827A /* unclickedup.png */,
+				5D9D78F2170E37C80031827A /* dvcolcked2.png */,
+				5D9D78F0170E1B9C0031827A /* reddit-alien.png */,
 				5D9D78DF170D2FA20031827A /* button_back.png */,
 				5D9D78E0170D2FA20031827A /* button_normal.png */,
 				5D9D78E1170D2FA20031827A /* common_bg.png */,
@@ -282,6 +308,13 @@
 				5D9D78E8170D2FA20031827A /* common_bg@2x.png in Resources */,
 				5D9D78E9170D2FA20031827A /* navbar_bg.png in Resources */,
 				5D9D78EA170D2FA20031827A /* navbar_bg@2x.png in Resources */,
+				5D9D78EF170E1A140031827A /* REDLoginViewController.xib in Resources */,
+				5D9D78F1170E1B9C0031827A /* reddit-alien.png in Resources */,
+				5D9D78F3170E37C80031827A /* dvcolcked2.png in Resources */,
+				5D9D78F5170E391E0031827A /* unclickedup.png in Resources */,
+				5D9D78F7170E39250031827A /* unclickedDown.png in Resources */,
+				5D9D78F9170E399F0031827A /* upvoteClicked.png in Resources */,
+				5D9D78FB170E3DA60031827A /* upvoteClicked2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +335,7 @@
 				5DF9C97E170BCD5D0030E6EA /* REDManager.m in Sources */,
 				5DF9C995170BDA790030E6EA /* Reachability.m in Sources */,
 				5DF9C999170CCD1A0030E6EA /* REDImageManager.m in Sources */,
+				5D9D78EE170E1A140031827A /* REDLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

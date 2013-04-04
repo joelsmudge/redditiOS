@@ -16,8 +16,8 @@
 {
     [REDManager sharedREDManager];
     
-    if(![[REDManager sharedREDManager] checkReachableWithMessage]){
-        [[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
+    if([[REDManager sharedREDManager] checkReachableWithMessage]){
+        //[[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
     }
     
     

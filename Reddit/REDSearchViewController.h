@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "REDPostListViewController.h"
+#import "REDLoginViewController.h"
 
 @interface REDSearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *SearchBar;

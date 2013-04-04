@@ -20,6 +20,8 @@
     if (self) {
         // Custom initialization
         self.webViewer.delegate = self;
+        upvoted = NO;
+        downvoted = NO;
     }
     return self;
 }
@@ -86,4 +88,37 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
+- (IBAction)upVote:(id)sender {
+    
+    if(upvoted){
+        UIImage *clickedUpVote = [UIImage imageNamed:@"unclickedup.png"];
+        [self.upVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
+        upvoted = NO;
+    } else {
+        UIImage *clickedUpVote = [UIImage imageNamed:@"upvoteClicked2.png"];
+        [self.upVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
+        upvoted = YES;
+        UIImage *downVote = [UIImage imageNamed:@"unclickedDown.png"];
+        [self.downVoteButton setImage:downVote forState:UIControlStateNormal];
+        downvoted = NO;
+    }
+}
+
+- (IBAction)downVote:(id)sender {
+    
+    if(downvoted){
+        UIImage *clickedUpVote = [UIImage imageNamed:@"unclickedDown.png"];
+        [self.downVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
+        downvoted = NO;
+    } else {
+        UIImage *clickedUpVote = [UIImage imageNamed:@"dvcolcked2.png"];
+        [self.downVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
+        downvoted = YES;
+        UIImage *upVote = [UIImage imageNamed:@"unclickedup.png"];
+        [self.upVoteButton setImage:upVote forState:UIControlStateNormal];
+        upvoted = NO;
+    }
+
+    
+}
 @end

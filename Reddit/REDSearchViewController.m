@@ -57,6 +57,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // Set up notifications for keyboard events
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     
@@ -82,7 +84,32 @@
     [[self navigationItem] setBackBarButtonItem:backButton];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg"]];
     
+    // Log in Button
+    UIBarButtonItem *logInButton = [[UIBarButtonItem alloc]
+                                    initWithTitle:@"Log-in"
+                                    style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(login)];
+    self.navigationItem.rightBarButtonItem = logInButton;
+    
 
+}
+
+- (void) login
+{
+    //allocate your view controller
+    REDLoginViewController *loginView = [[REDLoginViewController alloc] init];
+    
+    //push it to the navigationController
+    [[self navigationController] pushViewController:loginView animated:YES];
+}
+
+- (void) logout
+{
+    
+    // log out as current user and switch back to default user
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

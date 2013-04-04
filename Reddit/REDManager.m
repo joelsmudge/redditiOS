@@ -64,16 +64,23 @@
     NSError *loginRequestError = NULL;
     NSData *loginResponseData = [NSURLConnection sendSynchronousRequest:loginrequest returningResponse:&loginResponse error:&loginRequestError];
     NSString *loginResponseString = [[NSString alloc]initWithData:loginResponseData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",loginResponseString);
+    NSLog(@"REsponse is %@",loginResponseString);
     
     NSError *error;
     NSData *jsonData = [loginResponseString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *loginResults = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
     
     NSArray* errors = [[loginResults valueForKey:@"json"] valueForKey:@"errors"];
-    NSLog(@"Errors is %d", [errors count]);
     
-    if([errors count] == 0){
+    NSString* modhash = [[[loginResults valueForKey:@"json"] valueForKey:@"data"]valueForKey:@"modhash"];
+    NSString* cookie = [[[loginResults valueForKey:@"json"] valueForKey:@"data"]valueForKey:@"cookie"];
+    
+    NSLog(@"Modhash is %@",self.modhash);
+    NSLog(@"Cookie is %@",self.redditCookie);
+    NSLog(@"ERRORs is %@", errors);
+    
+    
+    if([errors count] == 0 && modhash != nil && cookie != nil){
         // Log in was successful, set username and other credentials
         self.username = username;
         self.modhash = [[[loginResults valueForKey:@"json"] valueForKey:@"data"]valueForKey:@"modhash"];
@@ -83,13 +90,6 @@
         NSLog(@"Cookie is %@",self.redditCookie);
         return YES;
     } else {
-
-        // For Debugging
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message: @"Incorrect Username or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        
-        [alert show];
-        
-        
         return NO;
     }
     
