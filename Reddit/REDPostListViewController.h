@@ -15,6 +15,7 @@
 @property int currentlyLoadingToPostIndex;
 @property (weak, nonatomic) IBOutlet UIView *loadingBar;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
+@property (strong, nonatomic) IBOutlet UIView *noPostsFound;
 
 
 @end

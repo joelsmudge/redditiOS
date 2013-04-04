@@ -29,6 +29,8 @@
 		5DF9C995170BDA790030E6EA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C98C170BD7E20030E6EA /* Reachability.m */; };
 		5DF9C996170BDC880030E6EA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C98F170BD97F0030E6EA /* SystemConfiguration.framework */; };
 		5DF9C999170CCD1A0030E6EA /* REDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9C998170CCD1A0030E6EA /* REDImageManager.m */; };
+		5DF9C99B170D05D60030E6EA /* SadRedditAlien.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DF9C99A170D05D60030E6EA /* SadRedditAlien.png */; };
+		5DF9C99D170D07E90030E6EA /* rageface.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DF9C99C170D07E90030E6EA /* rageface.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		5DF9C993170BD9AC0030E6EA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5DF9C997170CCD1A0030E6EA /* REDImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REDImageManager.h; sourceTree = "<group>"; };
 		5DF9C998170CCD1A0030E6EA /* REDImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REDImageManager.m; sourceTree = "<group>"; };
+		5DF9C99A170D05D60030E6EA /* SadRedditAlien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SadRedditAlien.png; sourceTree = "<group>"; };
+		5DF9C99C170D07E90030E6EA /* rageface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rageface.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,8 @@
 		5DF9C980170BCD780030E6EA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5DF9C99C170D07E90030E6EA /* rageface.png */,
+				5DF9C99A170D05D60030E6EA /* SadRedditAlien.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -237,6 +243,8 @@
 				5DF9C96B170A4DA40030E6EA /* REDPostListViewController.xib in Resources */,
 				5DF9C970170A5F100030E6EA /* REDPostViewController.xib in Resources */,
 				5DF9C978170B6CA20030E6EA /* REDPostListCell.xib in Resources */,
+				5DF9C99B170D05D60030E6EA /* SadRedditAlien.png in Resources */,
+				5DF9C99D170D07E90030E6EA /* rageface.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

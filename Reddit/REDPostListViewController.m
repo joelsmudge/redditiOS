@@ -32,7 +32,6 @@
     [super viewDidLoad];
     _SearchResultsTable.delegate = self;
     _SearchResultsTable.dataSource = self;
-    [self.loadingBar setBackgroundColor:[UIColor grayColor]];
     [self.loadingSpinner startAnimating];
     [self.navigationItem setTitle:[NSString stringWithFormat:@"r/%@", self.searchQuery]];
     if([[REDManager sharedREDManager] checkReachableWithMessage]){
@@ -99,9 +98,7 @@
     
     if([self.posts count] == 0){
         // No posts found for subreddit
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Posts" message: @"Could Not Find Posts for this Sub-Reddit." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
+        self.SearchResultsTable.tableHeaderView = self.noPostsFound;
         self.loadingBar.hidden = YES;
     }
     
