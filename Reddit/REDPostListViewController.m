@@ -61,32 +61,55 @@
     NSError *requestError;
     NSHTTPURLResponse *urlResponse = nil;
     NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-//    [urlResponse statusCode];
+    NSLog([NSString stringWithFormat:@"Status Code = %d", [urlResponse statusCode]]);
     
-    NSLog([[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding]);
-
+    //NSLog([[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding]);
+    
+    if([urlResponse statusCode] >= 500){
+        [self serverError];
+    }
+    
     if(NSClassFromString(@"NSJSONSerialization"))
     {
         NSError *error = nil;
-        id object = [NSJSONSerialization
-                     JSONObjectWithData:response1
-                     options:0
-                     error:&error];
+        id object = nil;
         
-        if(error) {}
+        @try{
+            object = [NSJSONSerialization
+                      JSONObjectWithData:response1
+                      options:0
+                      error:&error];
+        }  @catch (NSException * e) {
+            [self serverError];
+        }
         
-        if([object isKindOfClass:[NSDictionary class]])
-        {
-            NSDictionary *results = object;
-            NSArray* jsonPosts = [[results objectForKey:@"data"] objectForKey:@"children"];
+        
+        if(error) {
+            [self serverError];
+            NSLog([NSString stringWithFormat:@"Error = %@", error]);
+        } else {
             
-            for (id jsonPost in jsonPosts) {
-
-                [self.posts addObject:[REDPost initCreatePostFromJson:jsonPost]];
+            if([object isKindOfClass:[NSDictionary class]])
+            {
+                NSDictionary *results = object;
+                NSArray* jsonPosts = [[results objectForKey:@"data"] objectForKey:@"children"];
+                
+                for (id jsonPost in jsonPosts) {
+                    
+                    [self.posts addObject:[REDPost initCreatePostFromJson:jsonPost]];
+                }
             }
         }
     }
     [self performSelectorOnMainThread:@selector(reloadSearchResults) withObject:nil waitUntilDone:NO];
+}
+
+
+- (void) serverError
+{
+    self.SearchResultsTable.tableFooterView = self.serverErrorView;
+    NSLog(@"Server Error");
+    serverErrorOccured = YES;
 }
 
 
@@ -96,7 +119,7 @@
     [self.loadingSpinner stopAnimating];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
-    if([self.posts count] == 0){
+    if([self.posts count] == 0 && !serverErrorOccured){
         // No posts found for subreddit
         self.SearchResultsTable.tableHeaderView = self.noPostsFound;
         self.loadingBar.hidden = YES;
@@ -175,8 +198,8 @@
 
 -(void)webView:(UIWebView *)technobuffalo didFailLoadWithError:(NSError *)error {
     
-
-
+    
+    
 }
 
 @end

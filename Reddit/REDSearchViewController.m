@@ -76,6 +76,12 @@
         [self.history addObject:@"All"];
         [self.history writeToFile:self.historyFileName atomically:YES];
     }
+    
+    // Nav Bar Customisation
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    [[self navigationItem] setBackBarButtonItem:backButton];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg"]];
+    
 
 }
 
@@ -95,7 +101,7 @@
     int index = ([self.history count] - 1 - indexPath.item);
     NSString* cellText = [[self.history objectAtIndex:index] description];
     [cell.textLabel setText:cellText];
-
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 

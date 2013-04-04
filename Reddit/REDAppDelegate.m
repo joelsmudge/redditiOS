@@ -15,10 +15,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [REDManager sharedREDManager];
-    [[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
+    
+    if(![[REDManager sharedREDManager] checkReachableWithMessage]){
+        [[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
+    }
+    
     
     self.searchView = [[REDSearchViewController alloc] initWithNibName:@"REDSearchViewController" bundle:nil];
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:self.searchView];
+    
+    if ([controller.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] ) {
+        UIImage *image = [UIImage imageNamed:@"rageface.png"];
+        [controller.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    }
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = controller;
@@ -27,6 +36,17 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    // Navagation Bar Stuff
+    // Override point for customization after application launch.
+    UIImage *navBackgroundImage = [UIImage imageNamed:@"navbar_bg"];
+    [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    UIImage *backButtonImage = [[UIImage imageNamed:@"button_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 6)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];// Change the appearance of other navigation button
+    UIImage *barButtonImage = [[UIImage imageNamed:@"button_normal"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
+    [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    return YES;
     
     return YES;
 }

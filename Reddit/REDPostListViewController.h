@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface REDPostListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
+    BOOL serverErrorOccured;
+}
 @property (strong, nonatomic) NSString *searchQuery;
 @property (strong, nonatomic) NSMutableArray *posts;
 @property (weak, nonatomic) IBOutlet UITableView *SearchResultsTable;
@@ -16,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *loadingBar;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
 @property (strong, nonatomic) IBOutlet UIView *noPostsFound;
+@property (strong, nonatomic) IBOutlet UIView *serverErrorView;
 
 
 @end

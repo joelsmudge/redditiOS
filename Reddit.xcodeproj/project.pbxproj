@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D9D77FD170D17820031827A /* okay.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D77FC170D17820031827A /* okay.jpg */; };
+		5D9D78DC170D254D0031827A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9D78DB170D254D0031827A /* Security.framework */; };
+		5D9D78DE170D255F0031827A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9D78DD170D255F0031827A /* MessageUI.framework */; };
+		5D9D78E5170D2FA20031827A /* button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78DF170D2FA20031827A /* button_back.png */; };
+		5D9D78E6170D2FA20031827A /* button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78E0170D2FA20031827A /* button_normal.png */; };
+		5D9D78E7170D2FA20031827A /* common_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78E1170D2FA20031827A /* common_bg.png */; };
+		5D9D78E8170D2FA20031827A /* common_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78E2170D2FA20031827A /* common_bg@2x.png */; };
+		5D9D78E9170D2FA20031827A /* navbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78E3170D2FA20031827A /* navbar_bg.png */; };
+		5D9D78EA170D2FA20031827A /* navbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D78E4170D2FA20031827A /* navbar_bg@2x.png */; };
 		5DF9C943170A354E0030E6EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C942170A354E0030E6EA /* UIKit.framework */; };
 		5DF9C945170A354E0030E6EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF9C944170A354E0030E6EA /* Foundation.framework */; };
 		5DF9C94D170A354E0030E6EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5DF9C94B170A354E0030E6EA /* InfoPlist.strings */; };
@@ -34,6 +43,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D9D77FC170D17820031827A /* okay.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = okay.jpg; sourceTree = "<group>"; };
+		5D9D78DB170D254D0031827A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5D9D78DD170D255F0031827A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5D9D78DF170D2FA20031827A /* button_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_back.png; path = ../../../Downloads/CustomNavBar/CustomNavBar/images/button_back.png; sourceTree = "<group>"; };
+		5D9D78E0170D2FA20031827A /* button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_normal.png; path = ../../../Downloads/CustomNavBar/CustomNavBar/images/button_normal.png; sourceTree = "<group>"; };
+		5D9D78E1170D2FA20031827A /* common_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = common_bg.png; path = ../../../Downloads/CustomNavBar/CustomNavBar/images/common_bg.png; sourceTree = "<group>"; };
+		5D9D78E2170D2FA20031827A /* common_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "common_bg@2x.png"; path = "../../../Downloads/CustomNavBar/CustomNavBar/images/common_bg@2x.png"; sourceTree = "<group>"; };
+		5D9D78E3170D2FA20031827A /* navbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navbar_bg.png; path = ../../../Downloads/CustomNavBar/CustomNavBar/images/navbar_bg.png; sourceTree = "<group>"; };
+		5D9D78E4170D2FA20031827A /* navbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navbar_bg@2x.png"; path = "../../../Downloads/CustomNavBar/CustomNavBar/images/navbar_bg@2x.png"; sourceTree = "<group>"; };
 		5DF9C93F170A354E0030E6EA /* Reddit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reddit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF9C942170A354E0030E6EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5DF9C944170A354E0030E6EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -80,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D9D78DE170D255F0031827A /* MessageUI.framework in Frameworks */,
+				5D9D78DC170D254D0031827A /* Security.framework in Frameworks */,
 				5DF9C996170BDC880030E6EA /* SystemConfiguration.framework in Frameworks */,
 				5DF9C98E170BD94F0030E6EA /* CFNetwork.framework in Frameworks */,
 				5DF9C943170A354E0030E6EA /* UIKit.framework in Frameworks */,
@@ -93,6 +113,8 @@
 		5DF9C936170A354E0030E6EA = {
 			isa = PBXGroup;
 			children = (
+				5D9D78DD170D255F0031827A /* MessageUI.framework */,
+				5D9D78DB170D254D0031827A /* Security.framework */,
 				5DF9C993170BD9AC0030E6EA /* libz.dylib */,
 				5DF9C991170BD98F0030E6EA /* MobileCoreServices.framework */,
 				5DF9C98F170BD97F0030E6EA /* SystemConfiguration.framework */,
@@ -177,6 +199,13 @@
 		5DF9C980170BCD780030E6EA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5D9D78DF170D2FA20031827A /* button_back.png */,
+				5D9D78E0170D2FA20031827A /* button_normal.png */,
+				5D9D78E1170D2FA20031827A /* common_bg.png */,
+				5D9D78E2170D2FA20031827A /* common_bg@2x.png */,
+				5D9D78E3170D2FA20031827A /* navbar_bg.png */,
+				5D9D78E4170D2FA20031827A /* navbar_bg@2x.png */,
+				5D9D77FC170D17820031827A /* okay.jpg */,
 				5DF9C99C170D07E90030E6EA /* rageface.png */,
 				5DF9C99A170D05D60030E6EA /* SadRedditAlien.png */,
 			);
@@ -219,6 +248,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 			);
 			mainGroup = 5DF9C936170A354E0030E6EA;
 			productRefGroup = 5DF9C940170A354E0030E6EA /* Products */;
@@ -245,6 +275,13 @@
 				5DF9C978170B6CA20030E6EA /* REDPostListCell.xib in Resources */,
 				5DF9C99B170D05D60030E6EA /* SadRedditAlien.png in Resources */,
 				5DF9C99D170D07E90030E6EA /* rageface.png in Resources */,
+				5D9D77FD170D17820031827A /* okay.jpg in Resources */,
+				5D9D78E5170D2FA20031827A /* button_back.png in Resources */,
+				5D9D78E6170D2FA20031827A /* button_normal.png in Resources */,
+				5D9D78E7170D2FA20031827A /* common_bg.png in Resources */,
+				5D9D78E8170D2FA20031827A /* common_bg@2x.png in Resources */,
+				5D9D78E9170D2FA20031827A /* navbar_bg.png in Resources */,
+				5D9D78EA170D2FA20031827A /* navbar_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

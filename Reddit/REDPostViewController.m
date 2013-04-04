@@ -34,7 +34,7 @@
     if([[REDManager sharedREDManager] checkReachableWithMessage]){
         [self.webViewer loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.post.url]]];
     } else {
-        //[self.navigationController popViewControllerAnimated:YES];
+        // Connection Error
     }
     
     loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(145, 190, 20,20)];
@@ -46,12 +46,32 @@
     [self.subTitleLabel setText:[NSString stringWithFormat:@"by %@ - %@", self.post.author, self.post.domain]];
     [self.subSubTitleLabel setText:[NSString stringWithFormat:@"%@ {%@,%@} - %@ comments", self.post.score, self.post.ups, self.post.downs, self.post.numComments]];
     
+    
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Share"
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(share)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+    //[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObject:@"" forKey:@"LoginMod"]];
+    //[[NSUserDefaults standardUserDefaults] setObject:@"TEST" forKey:@"LoginMod"];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+// Sharing Stuff
+- (void)share
+{
+    NSLog(@"share button pressed");
+    NSString *text = [NSString stringWithFormat:@"%@\n", self.post.title];
+    NSURL *postURL = [NSURL URLWithString:self.post.url];
+    NSArray *activityItems = @[text, postURL];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView

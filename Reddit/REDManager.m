@@ -42,7 +42,7 @@
 -(BOOL) checkReachableWithMessage
 {
     if (![self reachable]){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message: @"Web View was unable to load. Please check your Internet connection before relaunching the application." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Lost" message: @"Please check your Internet connection before relaunching the application." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
     
         [alert show];
         return NO;
