@@ -54,12 +54,24 @@
 -(BOOL) login:(NSString*)user pass:(NSString*) passw
 {
     
-    
-    NSURL *loginurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.reddit.com/api/login/%@",user]];
+    [self eraseCredentials];
+    //NSURL *loginurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.reddit.com/api/login/%@",user]];
+    NSURL *loginurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://ssl.reddit.com/api/login/myusername"]];
     NSMutableURLRequest *loginrequest = [NSMutableURLRequest requestWithURL:loginurl];
     [loginrequest setHTTPMethod:@"POST"];
+    
+    [loginrequest setHTTPShouldHandleCookies:NO]; // Remove
+    
     NSData *loginRequestBody = [[NSString stringWithFormat:@"api_type=json&user=%@&passwd=%@&rem=True",user,passw] dataUsingEncoding:NSUTF8StringEncoding];
     [loginrequest setHTTPBody:loginRequestBody];
+    
+    
+    // Remove
+    //NSLog(@"login request is %@",[loginrequest description]);
+    //NSLog([NSHTTPCookieStorage cookies:@"reddit.com"]);
+    
+    // End remove
+    
     NSURLResponse *loginResponse = NULL;
     NSError *loginRequestError = NULL;
     NSData *loginResponseData = [NSURLConnection sendSynchronousRequest:loginrequest returningResponse:&loginResponse error:&loginRequestError];
@@ -94,6 +106,21 @@
         return NO;
     }
     
+}
+
+- (void) eraseCredentials{
+    NSURLCredentialStorage *credentialsStorage = [NSURLCredentialStorage sharedCredentialStorage];
+    NSDictionary *allCredentials = [credentialsStorage allCredentials];
+    
+    //iterate through all credentials to find the twitter host
+    for (NSURLProtectionSpace *protectionSpace in allCredentials)
+        if ([[protectionSpace host] isEqualToString:@"www.reddit.com"]){
+            //to get the twitter's credentials
+            NSDictionary *credentials = [credentialsStorage credentialsForProtectionSpace:protectionSpace];
+            //iterate through twitter's credentials, and erase them all
+            for (NSString *credentialKey in credentials)
+                [credentialsStorage removeCredential:[credentials objectForKey:credentialKey] forProtectionSpace:protectionSpace];
+        }
 }
 
 -(BOOL) vote: (NSString*) postName direction:(int) dir

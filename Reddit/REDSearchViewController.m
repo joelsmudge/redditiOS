@@ -45,10 +45,7 @@
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         self.historyFileName = [documentsDirectory stringByAppendingPathComponent:@"subreddithistory.dat"];
-        
-        
-        
-        
+    
     }
     return self;
 }
@@ -84,15 +81,62 @@
     [[self navigationItem] setBackBarButtonItem:backButton];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg"]];
     
-    // Log in Button
-    UIBarButtonItem *logInButton = [[UIBarButtonItem alloc]
-                                    initWithTitle:@"Log-in"
-                                    style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(login)];
-    self.navigationItem.rightBarButtonItem = logInButton;
+    NSString* username = [REDManager sharedREDManager].username;
+    
+    [[REDManager sharedREDManager] addObserver:self forKeyPath:@"username" options:0 context:nil];
+    
+    
+    if(![username isEqualToString:@"smudgetest"]){
+        NSLog(@"Unique logged in");
+        // Log in Button
+        UIBarButtonItem *logInButton = [[UIBarButtonItem alloc]
+                                        initWithTitle:@"Log-out"
+                                        style:UIBarButtonItemStyleBordered
+                                        target:self
+                                        action:@selector(logout)];
+        self.navigationItem.rightBarButtonItem = logInButton;
+    } else {
+        NSLog(@"Default logged in");
+        // Log in Button
+        UIBarButtonItem *logInButton = [[UIBarButtonItem alloc]
+                                        initWithTitle:@"Log-in"
+                                        style:UIBarButtonItemStyleBordered
+                                        target:self
+                                        action:@selector(login)];
+        self.navigationItem.rightBarButtonItem = logInButton;
+    }
     
 
+    
+
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"username"]) {
+        NSLog(@"Username Changed:");
+        NSString* username = [REDManager sharedREDManager].username;
+        if(![username isEqualToString:@"smudgetest"]){
+            NSLog(@"Unique logged in");
+            // Log in Button
+            UIBarButtonItem *logInButton = [[UIBarButtonItem alloc]
+                                            initWithTitle:@"Log-out"
+                                            style:UIBarButtonItemStyleBordered
+                                            target:self
+                                            action:@selector(logout)];
+            self.navigationItem.rightBarButtonItem = logInButton;
+        } else {
+            NSLog(@"Default logged in");
+            // Log in Button
+            UIBarButtonItem *logInButton = [[UIBarButtonItem alloc]
+                                            initWithTitle:@"Log-in"
+                                            style:UIBarButtonItemStyleBordered
+                                            target:self
+                                            action:@selector(login)];
+            self.navigationItem.rightBarButtonItem = logInButton;
+        }
+        
+    }
 }
 
 - (void) login
@@ -106,9 +150,12 @@
 
 - (void) logout
 {
-    
-    // log out as current user and switch back to default user
-    
+    // Log back to the default
+    NSLog(@"No one logged in");
+    if([[REDManager sharedREDManager] checkReachableWithMessage]){
+        [[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
+        [[REDManager sharedREDManager] saveUserCredentials];
+    }
     
 }
 
