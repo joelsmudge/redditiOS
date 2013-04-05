@@ -88,6 +88,7 @@
     
         NSLog(@"Modhash is %@",self.modhash);
         NSLog(@"Cookie is %@",self.redditCookie);
+        
         return YES;
     } else {
         return NO;
@@ -95,7 +96,37 @@
     
 }
 
+-(BOOL) vote: (NSString*) postName direction:(int) dir
+{
+    
+    NSURL *voteurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.reddit.com/api/vote"]];
+    NSMutableURLRequest *loginrequest = [NSMutableURLRequest requestWithURL:voteurl];
+    [loginrequest setHTTPMethod:@"POST"];
+    NSData *loginRequestBody = [[NSString stringWithFormat:@"api_type=json&dir=%d&id=%@&uh=%@", dir, postName, self.modhash] dataUsingEncoding:NSUTF8StringEncoding];
+    [loginrequest addValue:[REDManager sharedREDManager].redditCookie forHTTPHeaderField:@"reddit_session"];
+    [loginrequest setHTTPBody:loginRequestBody];
+    NSURLResponse *loginResponse = NULL;
+    NSError *loginRequestError = NULL;
+    NSData *loginResponseData = [NSURLConnection sendSynchronousRequest:loginrequest returningResponse:&loginResponse error:&loginRequestError];
+    NSString *loginResponseString = [[NSString alloc]initWithData:loginResponseData encoding:NSUTF8StringEncoding];
+    NSLog(@"REsponse is %@",loginResponseString);
+    
+}
 
+-(void) saveUserCredentials
+{
+    [[NSUserDefaults standardUserDefaults] setObject:self.username forKey:@"User"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.modhash forKey:@"Modhash"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.redditCookie forKey:@"Cookie"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(void) loadUserCredentials
+{
+    self.username = [[NSUserDefaults standardUserDefaults] objectForKey:@"User"];
+    self.modhash = [[NSUserDefaults standardUserDefaults] objectForKey:@"Modhash"];
+    self.redditCookie = [[NSUserDefaults standardUserDefaults] objectForKey:@"Cookie"];
+}
 
 
 

@@ -11,7 +11,7 @@
 @interface REDLoginViewController : UIViewController
 - (IBAction)loginButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *passwField;
 
 
 @property (weak, nonatomic) IBOutlet UIView *loggingInView;

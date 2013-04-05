@@ -55,9 +55,7 @@
                                    target:self
                                    action:@selector(share)];
     self.navigationItem.rightBarButtonItem = shareButton;
-    //[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObject:@"" forKey:@"LoginMod"]];
-    //[[NSUserDefaults standardUserDefaults] setObject:@"TEST" forKey:@"LoginMod"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 // Sharing Stuff
@@ -94,6 +92,7 @@
         UIImage *clickedUpVote = [UIImage imageNamed:@"unclickedup.png"];
         [self.upVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
         upvoted = NO;
+        [[REDManager sharedREDManager] vote:self.post.name direction:0];
     } else {
         UIImage *clickedUpVote = [UIImage imageNamed:@"upvoteClicked2.png"];
         [self.upVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
@@ -101,6 +100,7 @@
         UIImage *downVote = [UIImage imageNamed:@"unclickedDown.png"];
         [self.downVoteButton setImage:downVote forState:UIControlStateNormal];
         downvoted = NO;
+        [[REDManager sharedREDManager] vote:self.post.name direction:1];
     }
 }
 
@@ -110,6 +110,7 @@
         UIImage *clickedUpVote = [UIImage imageNamed:@"unclickedDown.png"];
         [self.downVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
         downvoted = NO;
+        [[REDManager sharedREDManager] vote:self.post.name direction:0];
     } else {
         UIImage *clickedUpVote = [UIImage imageNamed:@"dvcolcked2.png"];
         [self.downVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
@@ -117,6 +118,7 @@
         UIImage *upVote = [UIImage imageNamed:@"unclickedup.png"];
         [self.upVoteButton setImage:upVote forState:UIControlStateNormal];
         upvoted = NO;
+        [[REDManager sharedREDManager] vote:self.post.name direction:-1];
     }
 
     

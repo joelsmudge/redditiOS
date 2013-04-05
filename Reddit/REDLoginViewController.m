@@ -30,7 +30,6 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.passwordField.secureTextEntry = YES;
     self.loggingInView.hidden = YES;
     [self.userNameField becomeFirstResponder];
     
@@ -64,8 +63,8 @@
 - (void) performLoginRequest
 {
     
-    //BOOL success = [[REDManager sharedREDManager] login:self.userNameField.text pass:self.passwordField.text];
-    BOOL success = NO;
+    BOOL success = [[REDManager sharedREDManager] login:self.userNameField.text pass:self.passwField.text];
+    //BOOL success = NO;
     NSString* successMessage = @"NO";
     if (success) {
         successMessage = @"YES";
@@ -81,6 +80,7 @@
         [self.loggingInSpinner stopAnimating];
         self.loggingInSpinner.hidden = YES;
         self.LoggingInMessage.text = @"Logged In";
+        [[REDManager sharedREDManager] saveUserCredentials];
         [self.navigationController popToRootViewControllerAnimated:YES];
     } else {
         // Incorrect Login Details

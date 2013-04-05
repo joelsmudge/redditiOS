@@ -16,10 +16,35 @@
 {
     [REDManager sharedREDManager];
     
-    if([[REDManager sharedREDManager] checkReachableWithMessage]){
-        //[[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
+    
+    //[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObject:@"" forKey:@"LoginMod"]];
+    
+    
+    
+    //[[NSUserDefaults standardUserDefaults] setObject:@"TEST" forKey:@"LoginMod"];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"User"];
+    if(username == nil){
+        // Never been logged in, not even the default
+        // Log in default
+        NSLog(@"No one logged in");
+        if([[REDManager sharedREDManager] checkReachableWithMessage]){
+            [[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
+            [[REDManager sharedREDManager] saveUserCredentials];
+        }
     }
     
+    if(![username isEqualToString:@"smudgetest"]){
+        NSLog(@"Unique logged in");
+        [REDManager sharedREDManager].userIsLoggedIn = YES;
+        [[REDManager sharedREDManager] loadUserCredentials];
+    } else {
+        NSLog(@"Default logged in");
+        [REDManager sharedREDManager].userIsLoggedIn = NO;
+        [[REDManager sharedREDManager] loadUserCredentials];
+    }
     
     self.searchView = [[REDSearchViewController alloc] initWithNibName:@"REDSearchViewController" bundle:nil];
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:self.searchView];
