@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSString* numComments;
 @property (strong, nonatomic) NSString* thumbnail;
 @property (strong, nonatomic) NSString* ups;
+@property (strong, nonatomic) NSString* likes;
 + initCreatePostFromJson: (NSDictionary*) json;
 
 @end

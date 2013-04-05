@@ -63,7 +63,8 @@
     NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
     NSLog([NSString stringWithFormat:@"Status Code = %d", [urlResponse statusCode]]);
     
-    //NSLog([[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding]);
+    NSLog(@"Response is");
+    NSLog([[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding]);
     
     if([urlResponse statusCode] >= 500){
         [self serverError];
@@ -95,8 +96,9 @@
                 NSArray* jsonPosts = [[results objectForKey:@"data"] objectForKey:@"children"];
                 
                 for (id jsonPost in jsonPosts) {
-                    
-                    [self.posts addObject:[REDPost initCreatePostFromJson:jsonPost]];
+                    REDPost* post = [REDPost initCreatePostFromJson:jsonPost];
+                    [self.posts addObject:post];
+                    [post addObserver:self forKeyPath:@"likes" options:0 context:nil];
                 }
             }
         }
@@ -124,10 +126,6 @@
         self.SearchResultsTable.tableHeaderView = self.noPostsFound;
         self.loadingBar.hidden = YES;
     }
-    
-    
-    
-    
 }
 
 
@@ -195,6 +193,14 @@
     // Deselecting Row
     [self.SearchResultsTable deselectRowAtIndexPath:[self.SearchResultsTable indexPathForSelectedRow] animated:YES];
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"likes"]) {
+        [self.SearchResultsTable reloadData];
+    }
+}
+
 
 -(void)webView:(UIWebView *)technobuffalo didFailLoadWithError:(NSError *)error {
     

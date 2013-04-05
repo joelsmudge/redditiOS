@@ -35,7 +35,7 @@
 {
     // Check cache for image
     if([self isImageCached:url]){
-        NSLog(@"Image is Cached");
+        //NSLog(@"Image is Cached");
         return [self loadImage:url];
     }
     

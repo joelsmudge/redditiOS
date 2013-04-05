@@ -51,14 +51,14 @@
     
 }
 
--(BOOL) login:(NSString*)username pass:(NSString*) password
+-(BOOL) login:(NSString*)user pass:(NSString*) passw
 {
     
     
-    NSURL *loginurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.reddit.com/api/login/%@",username]];
+    NSURL *loginurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.reddit.com/api/login/%@",user]];
     NSMutableURLRequest *loginrequest = [NSMutableURLRequest requestWithURL:loginurl];
     [loginrequest setHTTPMethod:@"POST"];
-    NSData *loginRequestBody = [[NSString stringWithFormat:@"api_type=json&user=%@&passwd=%@&rem=True",username,password] dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *loginRequestBody = [[NSString stringWithFormat:@"api_type=json&user=%@&passwd=%@&rem=True",user,passw] dataUsingEncoding:NSUTF8StringEncoding];
     [loginrequest setHTTPBody:loginRequestBody];
     NSURLResponse *loginResponse = NULL;
     NSError *loginRequestError = NULL;
@@ -75,14 +75,14 @@
     NSString* modhash = [[[loginResults valueForKey:@"json"] valueForKey:@"data"]valueForKey:@"modhash"];
     NSString* cookie = [[[loginResults valueForKey:@"json"] valueForKey:@"data"]valueForKey:@"cookie"];
     
-    NSLog(@"Modhash is %@",self.modhash);
-    NSLog(@"Cookie is %@",self.redditCookie);
+    NSLog(@"Modhash is %@",modhash);
+    NSLog(@"Cookie is %@",cookie);
     NSLog(@"ERRORs is %@", errors);
     
     
     if([errors count] == 0 && modhash != nil && cookie != nil){
         // Log in was successful, set username and other credentials
-        self.username = username;
+        self.username = user;
         self.modhash = [[[loginResults valueForKey:@"json"] valueForKey:@"data"]valueForKey:@"modhash"];
         self.redditCookie = [[[loginResults valueForKey:@"json"] valueForKey:@"data"]valueForKey:@"cookie"];
     

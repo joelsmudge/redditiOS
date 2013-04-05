@@ -26,6 +26,7 @@
     post.author = [data objectForKey:@"author"];
     post.thumbnail = [data objectForKey:@"thumbnail"];
     post.numComments = [NSString stringWithFormat:@"%@", [data objectForKey:@"num_comments"]];
+    post.likes = [NSString stringWithFormat:@"%@", [data objectForKey:@"likes"]];
     post.ups = [NSString stringWithFormat:@"%@", [data objectForKey:@"ups"]];
     
     return post;

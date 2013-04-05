@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *SubTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SubSubTitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
+@property (weak, nonatomic) IBOutlet UIView *background;
+@property (strong, nonatomic) REDPost *myPost;
 
 - (void) setPost: (REDPost*) post;
 

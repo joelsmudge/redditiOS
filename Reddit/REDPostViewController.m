@@ -39,6 +39,17 @@
         // Connection Error
     }
     
+    if(![self.post.likes isEqualToString:@"<null>"]){
+        if([self.post.likes isEqualToString:@"1"]){
+            [self upVoteUI:YES];
+            [self downVoteUI:NO];
+        } else {
+            [self upVoteUI:NO];
+            [self downVoteUI:YES];
+        }
+    }
+    
+    
     loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(145, 190, 20,20)];
     [loadingIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
     [loadingIndicator setHidesWhenStopped:YES];
@@ -50,12 +61,12 @@
     
     
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Share"
-                                   style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(share)];
+                                    initWithTitle:@"Share"
+                                    style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(share)];
     self.navigationItem.rightBarButtonItem = shareButton;
-
+    
 }
 
 // Sharing Stuff
@@ -89,38 +100,55 @@
 - (IBAction)upVote:(id)sender {
     
     if(upvoted){
-        UIImage *clickedUpVote = [UIImage imageNamed:@"unclickedup.png"];
-        [self.upVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
-        upvoted = NO;
+        [self upVoteUI:NO];
         [[REDManager sharedREDManager] vote:self.post.name direction:0];
+        self.post.likes = @"<null>";
     } else {
-        UIImage *clickedUpVote = [UIImage imageNamed:@"upvoteClicked2.png"];
-        [self.upVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
-        upvoted = YES;
-        UIImage *downVote = [UIImage imageNamed:@"unclickedDown.png"];
-        [self.downVoteButton setImage:downVote forState:UIControlStateNormal];
-        downvoted = NO;
+        [self upVoteUI:YES];
+        [self downVoteUI:NO];
         [[REDManager sharedREDManager] vote:self.post.name direction:1];
+        self.post.likes = @"1";
     }
 }
 
 - (IBAction)downVote:(id)sender {
     
     if(downvoted){
-        UIImage *clickedUpVote = [UIImage imageNamed:@"unclickedDown.png"];
-        [self.downVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
-        downvoted = NO;
+        [self downVoteUI:NO];
         [[REDManager sharedREDManager] vote:self.post.name direction:0];
+        self.post.likes = @"<null>";
     } else {
+        [self downVoteUI:YES];
+        [self upVoteUI:NO];
+        [[REDManager sharedREDManager] vote:self.post.name direction:-1];
+        self.post.likes = @"0";
+    }
+}
+
+- (void) upVoteUI: (BOOL) voted
+{
+    if(voted){
+        UIImage *clickedUpVote = [UIImage imageNamed:@"upvoteClicked2.png"];
+        [self.upVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
+        upvoted = YES;
+    } else {
+        UIImage *clickedUpVote = [UIImage imageNamed:@"unclickedup.png"];
+        [self.upVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
+        upvoted = NO;
+    }
+}
+
+- (void) downVoteUI: (BOOL) voted
+{
+    if(voted){
         UIImage *clickedUpVote = [UIImage imageNamed:@"dvcolcked2.png"];
         [self.downVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
         downvoted = YES;
-        UIImage *upVote = [UIImage imageNamed:@"unclickedup.png"];
-        [self.upVoteButton setImage:upVote forState:UIControlStateNormal];
-        upvoted = NO;
-        [[REDManager sharedREDManager] vote:self.post.name direction:-1];
+    } else {
+        UIImage *clickedUpVote = [UIImage imageNamed:@"unclickedDown.png"];
+        [self.downVoteButton setImage:clickedUpVote forState:UIControlStateNormal];
+        downvoted = NO;
     }
-
-    
 }
+
 @end
