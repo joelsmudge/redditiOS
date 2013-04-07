@@ -86,7 +86,7 @@
     [[REDManager sharedREDManager] addObserver:self forKeyPath:@"username" options:0 context:nil];
     
     
-    if(![username isEqualToString:@"smudgetest"]){
+    if(![username isEqualToString:DEFAULT_USERNAME]){
         NSLog(@"Unique logged in");
         // Log in Button
         UIBarButtonItem *logInButton = [[UIBarButtonItem alloc]
@@ -116,7 +116,7 @@
     if ([keyPath isEqualToString:@"username"]) {
         NSLog(@"Username Changed:");
         NSString* username = [REDManager sharedREDManager].username;
-        if(![username isEqualToString:@"smudgetest"]){
+        if(![username isEqualToString:DEFAULT_USERNAME]){
             NSLog(@"Unique logged in");
             // Log in Button
             UIBarButtonItem *logInButton = [[UIBarButtonItem alloc]
@@ -150,13 +150,24 @@
 
 - (void) logout
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self performSelectorInBackground:@selector(logoutBack) withObject:nil];
+}
+
+- (void) logoutBack
+{
     // Log back to the default
     NSLog(@"No one logged in");
     if([[REDManager sharedREDManager] checkReachableWithMessage]){
-        [[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
+        [[REDManager sharedREDManager] login:DEFAULT_USERNAME pass:DEFAULT_PASSW];
         [[REDManager sharedREDManager] saveUserCredentials];
     }
-    
+    [self performSelectorOnMainThread:@selector(logoutCallback) withObject:nil waitUntilDone:NO];
+}
+
+- (void) logoutCallback
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 - (void)didReceiveMemoryWarning

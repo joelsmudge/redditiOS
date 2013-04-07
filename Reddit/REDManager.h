@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "Reachability.h"
 
+#define DEFAULT_USERNAME @"smudgetest"
+#define DEFAULT_PASSW @"smudge123"
+
 @interface REDManager : NSObject
 
 +(REDManager *) sharedREDManager;

@@ -48,8 +48,9 @@
 									<object class="IBUILabel" id="106079971">
 										<reference key="NSNextResponder" ref="555445274"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{3, -1}, {276, 21}}</string>
+										<string key="NSFrame">{{3, 0}, {276, 21}}</string>
 										<reference key="NSSuperview" ref="555445274"/>
+										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="820545581"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
@@ -64,6 +65,7 @@
 										</object>
 										<reference key="IBUIHighlightedColor" ref="115067163"/>
 										<int key="IBUIBaselineAdjustment">0</int>
+										<int key="IBUINumberOfLines">2</int>
 										<object class="IBUIFontDescription" key="IBUIFontDescription">
 											<int key="type">1</int>
 											<double key="pointSize">12</double>
@@ -74,12 +76,15 @@
 											<int key="NSfFlags">16</int>
 										</object>
 										<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+										<double key="preferredMaxLayoutWidth">276</double>
 									</object>
 									<object class="IBUILabel" id="820545581">
 										<reference key="NSNextResponder" ref="555445274"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{3, 13}, {276, 21}}</string>
 										<reference key="NSSuperview" ref="555445274"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="757753836"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -106,6 +111,8 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{3, 27}, {276, 21}}</string>
 										<reference key="NSSuperview" ref="555445274"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="892239653"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -132,6 +139,8 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{279, 2}, {40, 40}}</string>
 										<reference key="NSSuperview" ref="555445274"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -139,6 +148,8 @@
 								</array>
 								<string key="NSFrameSize">{320, 44}</string>
 								<reference key="NSSuperview" ref="384661478"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="106079971"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -149,7 +160,8 @@
 						</array>
 						<string key="NSFrameSize">{320, 43}</string>
 						<reference key="NSSuperview" ref="887004846"/>
-						<reference key="NSNextKeyView" ref="106079971"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="555445274"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -164,6 +176,7 @@
 				</array>
 				<string key="NSFrameSize">{320, 44}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="384661478"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -245,10 +258,10 @@
 						<int key="objectID">151</int>
 						<reference key="object" ref="555445274"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="106079971"/>
 							<reference ref="757753836"/>
 							<reference ref="820545581"/>
 							<reference ref="892239653"/>
+							<reference ref="106079971"/>
 						</array>
 						<reference key="parent" ref="887004846"/>
 					</object>
@@ -296,7 +309,47 @@
 			<nil key="sourceID"/>
 			<int key="maxID">315</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">REDPostListCell</string>
+					<string key="superclassName">UITableViewCell</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="SubSubTitleLabel">UILabel</string>
+						<string key="SubTitleLabel">UILabel</string>
+						<string key="TitleLabel">UILabel</string>
+						<string key="background">UIView</string>
+						<string key="thumbnail">UIImageView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="SubSubTitleLabel">
+							<string key="name">SubSubTitleLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="SubTitleLabel">
+							<string key="name">SubTitleLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="TitleLabel">
+							<string key="name">TitleLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="background">
+							<string key="name">background</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="thumbnail">
+							<string key="name">thumbnail</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/REDPostListCell.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

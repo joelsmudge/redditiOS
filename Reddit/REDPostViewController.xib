@@ -122,7 +122,7 @@
 								<string key="NSFrame">{{34, 39}, {280, 20}}</string>
 								<reference key="NSSuperview" ref="860828554"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="180303471"/>
+								<reference key="NSNextKeyView" ref="512464116"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -144,7 +144,7 @@
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
-							<object class="IBUIButton" id="374169789">
+							<object class="IBUIButton" id="358887643">
 								<reference key="NSNextResponder" ref="860828554"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{3, 2}, {26, 26}}</string>
@@ -162,7 +162,7 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
-								<object class="NSColor" key="IBUINormalTitleShadowColor" id="538688737">
+								<object class="NSColor" key="IBUINormalTitleShadowColor" id="1018908595">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
@@ -170,17 +170,17 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">unclickedup.png</string>
 								</object>
-								<object class="IBUIFontDescription" key="IBUIFontDescription" id="526442253">
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="197154529">
 									<int key="type">2</int>
 									<double key="pointSize">15</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="1018317462">
+								<object class="NSFont" key="IBUIFont" id="969687366">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
-							<object class="IBUIButton" id="180303471">
+							<object class="IBUIButton" id="512464116">
 								<reference key="NSNextResponder" ref="860828554"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{3, 31}, {26, 26}}</string>
@@ -198,19 +198,19 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
-								<reference key="IBUINormalTitleShadowColor" ref="538688737"/>
+								<reference key="IBUINormalTitleShadowColor" ref="1018908595"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">unclickedDown.png</string>
 								</object>
-								<reference key="IBUIFontDescription" ref="526442253"/>
-								<reference key="IBUIFont" ref="1018317462"/>
+								<reference key="IBUIFontDescription" ref="197154529"/>
+								<reference key="IBUIFont" ref="969687366"/>
 							</object>
 						</array>
 						<string key="NSFrameSize">{320, 58}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="374169789"/>
+						<reference key="NSNextKeyView" ref="358887643"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -297,7 +297,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">downVoteButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="180303471"/>
+						<reference key="destination" ref="512464116"/>
 					</object>
 					<int key="connectionID">286</int>
 				</object>
@@ -305,14 +305,14 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">upVoteButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="374169789"/>
+						<reference key="destination" ref="358887643"/>
 					</object>
 					<int key="connectionID">287</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">upVote:</string>
-						<reference key="source" ref="374169789"/>
+						<reference key="source" ref="358887643"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">1</int>
 					</object>
@@ -321,7 +321,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">downVote:</string>
-						<reference key="source" ref="180303471"/>
+						<reference key="source" ref="512464116"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">1</int>
 					</object>
@@ -369,8 +369,8 @@
 							<reference ref="872908555"/>
 							<reference ref="754034716"/>
 							<reference ref="779765727"/>
-							<reference ref="374169789"/>
-							<reference ref="180303471"/>
+							<reference ref="358887643"/>
+							<reference ref="512464116"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -391,12 +391,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">282</int>
-						<reference key="object" ref="374169789"/>
+						<reference key="object" ref="358887643"/>
 						<reference key="parent" ref="860828554"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">284</int>
-						<reference key="object" ref="180303471"/>
+						<reference key="object" ref="512464116"/>
 						<reference key="parent" ref="860828554"/>
 					</object>
 				</array>
@@ -411,6 +411,7 @@
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="272.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="282.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="3" key="282.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="284.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="52.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

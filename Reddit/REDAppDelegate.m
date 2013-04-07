@@ -31,12 +31,12 @@
         // Log in default
         NSLog(@"No one logged in");
         if([[REDManager sharedREDManager] checkReachableWithMessage]){
-            [[REDManager sharedREDManager] login:@"smudgetest" pass:@"smudge123"];
+            [[REDManager sharedREDManager] login:DEFAULT_USERNAME pass:DEFAULT_PASSW];
             [[REDManager sharedREDManager] saveUserCredentials];
         }
     }
     
-    if(![username isEqualToString:@"smudgetest"]){
+    if(![username isEqualToString:DEFAULT_USERNAME]){
         NSLog(@"Unique logged in");
         [REDManager sharedREDManager].userIsLoggedIn = YES;
         [[REDManager sharedREDManager] loadUserCredentials];

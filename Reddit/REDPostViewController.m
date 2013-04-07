@@ -55,10 +55,14 @@
     [loadingIndicator setHidesWhenStopped:YES];
     [self.webViewer addSubview:loadingIndicator];
     
+    
+    // Set the title names
     [self.titleLabel setText:self.post.title];
     [self.subTitleLabel setText:[NSString stringWithFormat:@"by %@ - %@", self.post.author, self.post.domain]];
     [self.subSubTitleLabel setText:[NSString stringWithFormat:@"%@ {%@,%@} - %@ comments", self.post.score, self.post.ups, self.post.downs, self.post.numComments]];
     
+    // Alter View for login
+    [self alterViewForLogin];
     
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
                                     initWithTitle:@"Share"
@@ -67,6 +71,21 @@
                                     action:@selector(share)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
+}
+
+// Alters the view depending if the user is logged in
+- (void) alterViewForLogin
+{
+    if(![[REDManager sharedREDManager].username isEqualToString:DEFAULT_USERNAME]){
+        // Unique User. Voting symbols shown.
+    } else {
+        // Hide voting arrows and move text
+        self.downVoteButton.hidden = YES;
+        self.upVoteButton.hidden = YES;
+        self.titleLabel.frame = CGRectMake(3, self.titleLabel.frame.origin.y, self.titleLabel.frame.size.width + self.titleLabel.frame.origin.x - 3, self.titleLabel.frame.size.height);
+        self.subTitleLabel.frame = CGRectMake(3, self.subTitleLabel.frame.origin.y, self.subTitleLabel.frame.size.width + self.subTitleLabel.frame.origin.x - 3, self.subTitleLabel.frame.size.height);
+        self.subSubTitleLabel.frame = CGRectMake(3, self.subSubTitleLabel.frame.origin.y, self.subSubTitleLabel.frame.size.width + self.subSubTitleLabel.frame.origin.x - 3, self.subSubTitleLabel.frame.size.height);
+    }
 }
 
 // Sharing Stuff

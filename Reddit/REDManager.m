@@ -54,7 +54,7 @@
 -(BOOL) login:(NSString*)user pass:(NSString*) passw
 {
     
-    [self eraseCredentials];
+    //[self eraseCredentials];
     //NSURL *loginurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.reddit.com/api/login/%@",user]];
     NSURL *loginurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://ssl.reddit.com/api/login/myusername"]];
     NSMutableURLRequest *loginrequest = [NSMutableURLRequest requestWithURL:loginurl];
@@ -62,8 +62,9 @@
     
     [loginrequest setHTTPShouldHandleCookies:NO]; // Remove
     
-    NSData *loginRequestBody = [[NSString stringWithFormat:@"api_type=json&user=%@&passwd=%@&rem=True",user,passw] dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *loginRequestBody = [[NSString stringWithFormat:@"api_type=json&rem=True&user=%@&passwd=%@",user,passw] dataUsingEncoding:NSUTF8StringEncoding];
     [loginrequest setHTTPBody:loginRequestBody];
+    
     
     
     // Remove
@@ -125,12 +126,39 @@
 
 -(BOOL) vote: (NSString*) postName direction:(int) dir
 {
+    //[self eraseCredentials];
+    
+    
+    
     
     NSURL *voteurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.reddit.com/api/vote"]];
     NSMutableURLRequest *loginrequest = [NSMutableURLRequest requestWithURL:voteurl];
+    
+    
+
+    
+    
+    
+    //[loginrequest setHTTPShouldHandleCookies:NO]; // Remove
     [loginrequest setHTTPMethod:@"POST"];
     NSData *loginRequestBody = [[NSString stringWithFormat:@"api_type=json&dir=%d&id=%@&uh=%@", dir, postName, self.modhash] dataUsingEncoding:NSUTF8StringEncoding];
     [loginrequest addValue:[REDManager sharedREDManager].redditCookie forHTTPHeaderField:@"reddit_session"];
+    
+    
+    NSDictionary *cookieProperties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      @"reddit.com", NSHTTPCookieDomain,
+                                      @"\\", NSHTTPCookiePath,
+                                      @"reddit_session", NSHTTPCookieName,
+                                      [REDManager sharedREDManager].redditCookie, NSHTTPCookieValue,
+                                      nil];
+    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+    NSArray* cookieArray = [NSArray arrayWithObjects: cookie, nil];
+    NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookieArray];
+    [loginrequest setAllHTTPHeaderFields:headers];
+    
+    
+    
+    
     [loginrequest setHTTPBody:loginRequestBody];
     NSURLResponse *loginResponse = NULL;
     NSError *loginRequestError = NULL;

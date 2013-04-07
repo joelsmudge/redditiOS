@@ -74,7 +74,7 @@
 
 - (void) loginCompleted: (NSString*) successful
 {
-    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     if([successful isEqualToString:@"YES"]){
         // Login Successful
         [self.loggingInSpinner stopAnimating];
