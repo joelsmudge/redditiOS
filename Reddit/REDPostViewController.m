@@ -29,16 +29,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     _webViewer.delegate = self;
     [self.loadingSplashView setBackgroundColor:[UIColor grayColor]];
     
+    // Check connection
     if([[REDManager sharedREDManager] checkReachableWithMessage]){
         [self.webViewer loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.post.url]]];
     } else {
         // Connection Error
     }
     
+    // Check voting
     if(![self.post.likes isEqualToString:@"<null>"]){
         if([self.post.likes isEqualToString:@"1"]){
             [self upVoteUI:YES];
@@ -49,7 +50,7 @@
         }
     }
     
-    
+    // Add loading icon for web view
     loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(145, 190, 20,20)];
     [loadingIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
     [loadingIndicator setHidesWhenStopped:YES];
@@ -116,6 +117,8 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
+
+/*** Voting and UI Methods ***/ 
 - (IBAction)upVote:(id)sender {
     
     if(upvoted){

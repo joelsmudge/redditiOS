@@ -57,7 +57,6 @@
         // No Connection
         self.loggingInView.hidden = YES;
     }
-    
 }
 
 - (void) performLoginRequest

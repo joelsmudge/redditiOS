@@ -140,17 +140,12 @@
     	cell = (REDPostListCell*)[nib objectAtIndex:0];
     }
     REDPost* post = [self.posts objectAtIndex:indexPath.item];
-    
     [cell setPost:post];
-    
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
     // If index gets close to posts length then load more posts asyncronosly
     if([indexPath item] + 5 > self.currentlyLoadingToPostIndex){
         // Load more posts
@@ -163,8 +158,6 @@
         }
         self.currentlyLoadingToPostIndex += 25;
     }
-    
-    
 }
 
 
@@ -199,13 +192,6 @@
     if ([keyPath isEqualToString:@"likes"]) {
         [self.SearchResultsTable reloadData];
     }
-}
-
-
--(void)webView:(UIWebView *)technobuffalo didFailLoadWithError:(NSError *)error {
-    
-    
-    
 }
 
 @end

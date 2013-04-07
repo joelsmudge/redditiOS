@@ -53,7 +53,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     // Set up notifications for keyboard events
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
@@ -81,11 +80,9 @@
     [[self navigationItem] setBackBarButtonItem:backButton];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg"]];
     
+    // Check for user being logged in and set login button
     NSString* username = [REDManager sharedREDManager].username;
-    
     [[REDManager sharedREDManager] addObserver:self forKeyPath:@"username" options:0 context:nil];
-    
-    
     if(![username isEqualToString:DEFAULT_USERNAME]){
         NSLog(@"Unique logged in");
         // Log in Button
@@ -105,12 +102,9 @@
                                         action:@selector(login)];
         self.navigationItem.rightBarButtonItem = logInButton;
     }
-    
-
-    
-
 }
 
+// Changes the login button when the user is logged in
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"username"]) {

@@ -33,15 +33,12 @@
 
 - (void) prepareForReuse{
     [super prepareForReuse];
-    
     _thumbnail.image = nil;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (NSString *) reuseIdentifier {
@@ -58,6 +55,7 @@
     self.myPost = post;
     [self.myPost addObserver:self forKeyPath:@"likes" options:0 context:nil];
     
+    // Check voting
     if(![post.likes isEqualToString:@"<null>"]){
         if([post.likes isEqualToString:@"0"]){
             self.background.backgroundColor = [UIColor colorWithRed:0.33 green:0.4 blue:0.5 alpha:1];

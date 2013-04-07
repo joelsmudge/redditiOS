@@ -15,16 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [REDManager sharedREDManager];
-    
-    
-    //[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObject:@"" forKey:@"LoginMod"]];
-    
-    
-    
-    //[[NSUserDefaults standardUserDefaults] setObject:@"TEST" forKey:@"LoginMod"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
-    
-    
+
     NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"User"];
     if(username == nil){
         // Never been logged in, not even the default
@@ -56,7 +47,6 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = controller;
-//    [self.window addSubview:controller.view];
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
