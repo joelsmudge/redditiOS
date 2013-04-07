@@ -10,6 +10,9 @@
 #import "REDPost.h"
 
 @interface REDPostListCell : UITableViewCell
+{
+    UIActivityIndicatorView *loadingIndicator;
+}
 @property (weak, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SubTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SubSubTitleLabel;

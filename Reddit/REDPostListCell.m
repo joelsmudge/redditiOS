@@ -68,16 +68,29 @@
         self.background.backgroundColor = [UIColor colorWithRed:0.33 green:0.33 blue:0.33 alpha:1];
     }
     
+    // Add loading indicator to thumbnail
+    loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(10, 10, 20,20)];
+    [loadingIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    [loadingIndicator setHidesWhenStopped:YES];
+    [self.thumbnail addSubview:loadingIndicator];
+    [loadingIndicator startAnimating];
     
+    // Get image for thumbnail
     [self performSelectorInBackground:@selector(loadThumbnail:) withObject:post.thumbnail];
     
 }
 
+//remove activity indicator while connection did finish loadin
+-(void)imageDidFinishLoading
+{
+    [loadingIndicator stopAnimating];
+    [loadingIndicator removeFromSuperview];
+}
+
 - (void)loadThumbnail: (NSString*) thumbnailURL
 {
-    //NSData *mydata = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:thumbnailURL]];
-    //UIImage *myimage = [[UIImage alloc] initWithData:mydata];
     [self.thumbnail setImage:[[REDImageManager sharedREDImageManager] getImage:thumbnailURL]];
+    [self performSelectorOnMainThread:@selector(imageDidFinishLoading) withObject:nil waitUntilDone:NO];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
